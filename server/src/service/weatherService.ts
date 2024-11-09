@@ -37,7 +37,7 @@ class WeatherService {
       throw new Error('Failed to fetch location data');
     }
     const data = await response.json();
-    console.log('API response:', data);
+    console.log('Got the API Data:', data);
 
     if (data.length === 0) {
       throw new Error('Location not found');
@@ -57,13 +57,13 @@ class WeatherService {
   // TODO: Create buildGeocodeQuery method
   private buildGeocodeQuery(city: string): string {
     const query =`${this.baseURL}/geo/1.0/direct?q=${encodeURIComponent(city)}&appid=${this.apiKey}`;
-    console.log('Geocode query:', query);
+    console.log('Geocode Data:', query);
     return query;
   }
   // TODO: Create buildWeatherQuery method
   private buildWeatherQuery(coordinates: Coordinates): string {
     const query = `${this.baseURL}/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${this.apiKey}`;
-    console.log('Weather query:', query);
+    console.log('Weather Data:', query);
     return query;
   }
   // TODO: Create fetchAndDestructureLocationData method

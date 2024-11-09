@@ -6,7 +6,7 @@ import WeatherService from '../../service/weatherService.js';
 
 // TODO: POST Request with city name to retrieve weather data
 router.post('/',  async (req, res) => {
-  console.log('Request body:', req.body);
+  console.log('Data Request:', req.body);
   const cityName = req.body.cityName;
 
   if (!cityName || typeof cityName !== 'string' || cityName.trim() === '') {return res.status(400).json({error: 'Invalid city name'});}
@@ -14,6 +14,7 @@ router.post('/',  async (req, res) => {
   try{
   // TODO: GET weather data from city name
   const weatherData = await WeatherService.getWeatherForCity(cityName);
+  console.log("Weather Data", weatherData);
   // TODO: save city to search history
   await HistoryService.addCity(cityName);
   //return weather data as a response
@@ -30,6 +31,7 @@ router.get('/history', async (_, res) => {
     //retrive search history
     const history = await HistoryService.getCities();
     res.json(history);
+    console.log("Fetched History")
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'An error occurred while fetching search history'});
