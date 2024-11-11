@@ -25,6 +25,7 @@ const fetchWeather = async (cityName) => {
     });
     const weatherData = await response.json();
     console.log('weatherData: ', weatherData);
+
     renderCurrentWeather(weatherData[0]);
     renderForecast(weatherData.slice(1));
 };
@@ -67,6 +68,7 @@ const renderCurrentWeather = (currentWeather) => {
     }
 };
 const renderForecast = (forecast) => {
+    console.log("forecast render forecast", forecast);
     const headingCol = document.createElement('div');
     const heading = document.createElement('h4');
     headingCol.setAttribute('class', 'col-12');
@@ -81,9 +83,11 @@ const renderForecast = (forecast) => {
     }
 };
 const renderForecastCard = (forecast) => {
+    console.log("forescast render card", forecast)
     const { date, icon, iconDescription, tempF, windSpeed, humidity } = forecast;
     const { col, cardTitle, weatherIcon, tempEl, windEl, humidityEl } = createForecastCard();
     // Add content to elements
+    
     cardTitle.textContent = date;
     weatherIcon.setAttribute('src', `https://openweathermap.org/img/w/${icon}.png`);
     weatherIcon.setAttribute('alt', iconDescription);
