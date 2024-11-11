@@ -1,18 +1,19 @@
 # Sky Watchers
 ## Description
-Travel Mosaic is a collaborative web application designed to help users plan their travel itineraries for upcoming trips. With features that allow users to add activities, create packing lists, and track budgets, we aim to enhance the travel planning experience for everyone.
+Sky Watchers is a web application that you can use to view the current weather and five day forecast of any city that you would like to search. For your convenience, Sky Watchers also saves your previous searches on the left hand side of your screen. You can delete these saved searches at any time.
 
 - What was your motivation?
-TBA
-  
-- What problem does it solve?
-TBA
+I created this project because I travel a lot, and it is nice to have one place to easily access the weather in different places. I love that the weather updates automatically!
 
-- What did we learn?
-TBA  
+- What did I learn?
+Creating this project I learned to connect to an external API, use API keys, and load data onto my own webpage. 
 
 ## Features
-- TBA
+- City search
+- Saves your city search history
+- Loads today's weather
+- Loads a 5 day forecast for that city
+- Delete save city search history
 
 ## Technologies
 - HTML
