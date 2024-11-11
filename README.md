@@ -1,4 +1,6 @@
 # Sky Watchers
+![License](https://img.shields.io/badge/License-MIT-yellow.svg "License")
+
 ## Description
 Sky Watchers is a web application that you can use to view the current weather and five day forecast of any city that you would like to search. For your convenience, Sky Watchers also saves your previous searches on the left hand side of your screen. You can delete these saved searches at any time.
 
@@ -19,7 +21,8 @@ Creating this project I learned to connect to an external API, use API keys, and
 - HTML
 - Node.js
 - Type Script
-- Open Weather APU
+- Vite
+- Open Weather API
 
 
 ## Link to deployed website
@@ -35,10 +38,11 @@ TBA
 
 ## Installation
 No extra installations are needed to use this web application. Simply access it via your web browser.
+If you would like to edit the code, you can fork this repo. You must downloaded all the project dependencies including node.js, typescript, and vite. You will also have to get access to your own Open Weather API key to set up an .env file.
 
 
 ## Usage
-To get started with Sky Watchers
+To get started with Sky Watchers simply open the web application and search a city by name 
 
 
 ## Credits
@@ -46,12 +50,15 @@ To get started with Sky Watchers
 - [Kristy Thompson](https://github.com/Kristy-H-Thompson)
 
 ### Reasources used
-- Coming Soon
 
+- Node.js: [Link](https://nodejs.org/en/download/package-manager)
+- Typescript: [LINK](https://www.typescriptlang.org/download/)
+- Profesional readMe Guide: [Link](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide)
+- Open Weather API: [Link](https://openweathermap.org/api)
+- Vite documentation: [Link](https://vite.dev/)
 
 ## License
 MIT License
-
 
 ## User Stories
 - AS A traveler
