@@ -124,7 +124,6 @@ GEOCODE QUERY
   private buildGeocodeQuery(city: string): string {
     // Build API URL
     const query =`${this.baseURL}/geo/1.0/direct?q=${city}&appid=${this.apiKey}`;
-    console.log(query);
     return query;
   }
 
@@ -141,7 +140,6 @@ WEATHER QUERY
   private buildWeatherQuery(coordinates: Coordinates): string {
     // Build API URL
     const query = `${this.baseURL}/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=imperial&appid=${this.apiKey}`;
-    console.log(query);
     return query;
   }
 
@@ -177,7 +175,7 @@ FETCH AND DESTRUCTURE DATA
   // Build parseCurrentWeather method
   private parseCurrentWeather(response: any): Weather{
     const city = response.city.name;
-    const date = response.list[0].date_txt;
+    const date = response.list[0].dt_txt;
     const temperature = response.list[0].main.temp;
     const description = response.list[0].weather[0].description;
     const icon = response.list[0].weather[0].icon;
@@ -197,26 +195,39 @@ BUILD FORCAST ARRAY
 
 ------------------------------------------------------------------------------------------------------------ 
 */ 
-// Complete buildForecastArray method
-private buildForecastArray(currentWeather: Weather, weatherData: any[]): Weather[] {
-
-  // Define what is needed from the data
+buildForecastArray(currentWeather: Weather, weatherData: any[]): Weather[] {
+  // Define the forecast array starting with current weather
   const forecastArray = [currentWeather];
-  const forecastData = weatherData.map(item => {
+  console.log("LOOK AT THIS", forecastArray);
+
+  // Create a set to track dates we've already added
+  const datesAdded = new Set<string>();
+
+  // Filter the weatherData to get only one entry per day
+  const filteredData = weatherData.filter(item => {
+    const date = item.dt_txt.split(' ')[0]; // Extract the date part
+    if (!datesAdded.has(date)) {
+      datesAdded.add(date);
+      return true;
+    }
+    return false;
+  }).slice(0, 5); // Limit to the first 5 days
+
+  // Map through the filtered data to create Weather objects
+  const forecastData = filteredData.map(item => {
     const city = currentWeather.city;
-    const date = item.date_txt;
+    const date = item.dt_txt;
     const temperature = item.main.temp;
     const description = item.weather[0].description;
     const icon = item.weather[0].icon;
     const windSpeed = item.wind.speed;
     const humidity = item.main.humidity;
 
-    console.log(city);
-    
-    // Return a new Weather object to populate the forecastData array
+    // Return a new Weather object for each forecast day
     return new Weather(city, date, icon, description, temperature, windSpeed, humidity);
   });
 
+  // Return the combined array (current weather + 5 forecast entries)
   return forecastArray.concat(forecastData);
 }
 
